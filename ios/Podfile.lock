@@ -242,6 +242,8 @@ PODS:
   - React-jsinspector (0.68.2)
   - React-logger (0.68.2):
     - glog
+  - react-native-geolocation (2.1.0):
+    - React-Core
   - react-native-google-maps (0.31.1):
     - Google-Maps-iOS-Utils (= 4.1.0)
     - GoogleMaps (= 6.1.1)
@@ -349,6 +351,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - "react-native-geolocation (from `../node_modules/@react-native-community/geolocation`)"
   - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-location (from `../node_modules/react-native-location`)
   - react-native-maps (from `../node_modules/react-native-maps`)
@@ -412,6 +415,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-geolocation:
+    :path: "../node_modules/@react-native-community/geolocation"
   react-native-google-maps:
     :path: "../node_modules/react-native-maps"
   react-native-location:
@@ -473,6 +478,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: b7b553412f2ec768fe6c8f27cd6bafdb9d8719e6
   React-jsinspector: c5989c77cb89ae6a69561095a61cce56a44ae8e8
   React-logger: a0833912d93b36b791b7a521672d8ee89107aff1
+  react-native-geolocation: 69f4fd37650b8e7fee91816d395e62dd16f5ab8d
   react-native-google-maps: 8231ffa015bf8b222c2e2661fa9163cdb609a224
   react-native-location: 5a40ec1cc6abf2f6d94df979f98ec76c3a415681
   react-native-maps: 8b8bfada2c86205a7f5a07dd1f92f29b33ea83aa
@@ -493,6 +499,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 7923e585eaeb139b9f4531d25a125a1500162a0b
   Yoga: 99652481fcd320aefa4a7ef90095b95acd181952
 
-PODFILE CHECKSUM: 5c80502f9591219b1fa0ad576d25f4590f131cd7
+PODFILE CHECKSUM: 8c2da1db42a95890ff17766378f9c88847f2515d
 
 COCOAPODS: 1.11.2
