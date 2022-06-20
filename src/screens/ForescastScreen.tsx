@@ -62,6 +62,8 @@ const ForecastScreen = () => {
       },
       {
         enableHighAccuracy: false,
+        timeout: 30000,
+        maximumAge: 1000
       },
     );
   };
@@ -69,7 +71,7 @@ const ForecastScreen = () => {
   
   useEffect(() => {
     requestLocationPermission();
-  }, [currentLongitude, currentLatitude]);
+  }, []);
  
   return (
     <ForecastList lat={currentLatitude} lon={currentLongitude}/>

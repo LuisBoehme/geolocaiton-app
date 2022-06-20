@@ -19,12 +19,17 @@ const ForecastList = ({
   ] = useState([]);
 
   const getForecast = async (latitude: number, longitude: number) => {
-    let response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&cnt=15&units=metric&appid=0d562a71b6892a34b199b8fc71e1660f`,
-    )
-    let data = await response.json()
-    setForecastList(data.list)
-    return data;
+    try{
+      let response = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&cnt=15&units=metric&appid=0d562a71b6892a34b199b8fc71e1660f`,
+      )
+      let data = await response.json()
+      setForecastList(data.list)
+      return data;
+    }
+      catch(error) {
+        console.log(error)
+     }
   }
 
   useEffect(() => {

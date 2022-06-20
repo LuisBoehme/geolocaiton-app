@@ -19,7 +19,7 @@ const ForecastCard = ({
 } : Props ) => {
 
   return (
-    <Card style={styles.card}>
+    <Card testID={'forecast-card'} style={styles.card}>
       <Card.Content>
         <View style={styles.dataContainer}>
           <Icon name="clock-outline" size={35}  />

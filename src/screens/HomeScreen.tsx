@@ -66,28 +66,37 @@ const HomeScreen = () => {
       },
       {
         enableHighAccuracy: false,
+        timeout: 10000,
+        maximumAge: 300
       },
     );
   };
 
   const getWeatherData = async (latitude: number, longitude: number) => {
-    let response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=0d562a71b6892a34b199b8fc71e1660f`,
-    )
-    let data = await response.json()
-    setDesc(data.weather[0].description)
-    setTemp(data.main.temp)
-    setName(data.name)
-    console.log(data)
-    return data;
+    try{
+      let response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=0d562a71b6892a34b199b8fc71e1660f`,
+      )
+      let data = await response.json()
+      setDesc(data.weather[0].description)
+      setTemp(data.main.temp)
+      setName(data.name)
+      console.log(data)
+      return data;
+    }
+    catch(err) {
+      console.log(err)
+   }
   }
 
+  useEffect(() => {
     requestLocationPermission();
     getWeatherData(currentLatitude, currentLongitude)
+  }, [currentLatitude]);
  
   return (
     <ScrollView>
-      <MapCard lat={currentLatitude} lon={currentLongitude} refresh={getOneTimeLocation}/>
+      <MapCard lat={currentLatitude} lon={currentLongitude} refresh={() => getOneTimeLocation()}/>
       <WeatherCard lat={currentLatitude} lon={currentLongitude} temp={temp} desc={desc} name={name}/>
     </ScrollView>
   );
