@@ -61,9 +61,9 @@ npx react-native link react-native-vector-icons
 ```
 
 Now we have to configure our API Key for the OpenWeather service. Firstly, register at https://openweathermap.org/api and subscribe to the free `Current Weather Data`. After generating your API Key, you have to store it on a `.env` file. So, in our project root folder, create a `.env` file with the following: 
-``` 
+```bash
 OPEN_WEATHER_API={YOUR GENERATED API}
-#don`t forget to remove the brackets
+ # don`t forget to remove the brackets
 ```
 
 Next, we need a device to run our app. You can choose between plugging a device via USB with developer mode and USB debbuging emabled (to set this up, I recommend searching how to do so for your specific device) or using a simulator. I also recommend using a physical device as it is easier to use the device geolocation features.
