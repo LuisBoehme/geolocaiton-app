@@ -21,9 +21,9 @@ This is a simple Geolocation and OpenWeather app to showcase some coding skills.
 - [react-native-config](https://github.com/luggit/react-native-config) to manage envionments.
 - [react-navigation](https://reactnavigation.org/) navigation library.
 - [react-native-geolocation](https://github.com/michalchudziak/react-native-geolocation) for string localization.
-- [react-native-maps](https://github.com/stefalda/ReactNativeLocalization) for map display.
-- [react-native-paper](https://github.com/stefalda/ReactNativeLocalization) for ui components.
-- [react-native-vector-icons](https://github.com/stefalda/ReactNativeLocalization) for icon usage (react-native-paper dependency).
+- [react-native-maps](https://github.com/react-native-maps/react-native-maps) for map display.
+- [react-native-paper](https://callstack.github.io/react-native-paper/) for UI components.
+- [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) for icon usage (react-native-paper dependency).
 
 ## Folder structure
 
