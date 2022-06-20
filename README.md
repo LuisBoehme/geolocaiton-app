@@ -38,7 +38,7 @@ This project follows a very simple structure:
   - `hooks`: Folder that contains all your application hooks.
   - `utils`: Folder that contains generic ultilities functions and files.
 
-## How to run
+## How to setup
 
 ### Setup environment
 
@@ -60,9 +60,15 @@ React Native Paper (our UI library) uses `react-native-vector-icons` as a depend
 npx react-native link react-native-vector-icons
 ```
 
-Next, we need a device to run our app. You can choose between plugging a device via USB or using a simulator. We recomment using a physical device as it is easier to use the device geolocation features.
+Now we have to configure our API Key for the OpenWeather service. Firstly, register at https://openweathermap.org/api and subscribe to the free `Current Weather Data`. After generating your API Key, you have to store it on a `.env` file. So, in our project root folder, create a `.env` file with the following: 
+``` 
+OPEN_WEATHER_API={YOUR GENERATED API}
+#don`t forget to remove the brackets
+```
 
-To run on desired platfor, run:
+Next, we need a device to run our app. You can choose between plugging a device via USB with developer mode and USB debbuging emabled (to set this up, I recommend searching how to do so for your specific device) or using a simulator. I also recommend using a physical device as it is easier to use the device geolocation features.
+
+To run on desired platform, run:
 ```bash
  # for android devices
 yarn run android
@@ -70,5 +76,8 @@ yarn run android
  # for ios devices
 yarn run ios
 ```
+And that's it! The app should be running on your selected device and showing your current location (after you grant permission to do so) and current weather info and forecast.
+
+If you have any doubts, feel free to contact me.
 
 
