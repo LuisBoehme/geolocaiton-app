@@ -2,10 +2,9 @@ import React, {useState, useEffect} from 'react';
 import { PermissionsAndroid, Platform, ScrollView } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 
-import MapCard from '../components/MapCard';
-import WeatherCard from '../components/WeatherCard';
+import ForecastList from '../components/ForecastList';
  
-const HomeScreen = () => {
+const ForecastScreen = () => {
   const [
     currentLongitude,
     setCurrentLongitude
@@ -15,17 +14,9 @@ const HomeScreen = () => {
     setCurrentLatitude
   ] = useState(0);
   const [
-    desc,
-    setDesc
-  ] = useState("Loading Description");
-  const [
-    temp,
-    setTemp
-  ] = useState(0);
-  const [
-    name,
-    setName
-  ] = useState("Unknown");
+    locationStatus,
+    setLocationStatus
+  ] = useState('');
  
     const requestLocationPermission = async () => {
       if (Platform.OS === 'ios') {
@@ -41,6 +32,8 @@ const HomeScreen = () => {
           );
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             getOneTimeLocation();
+          } else {
+            setLocationStatus('Permission Denied');
           }
         } catch (err) {
           console.warn(err);
@@ -49,20 +42,23 @@ const HomeScreen = () => {
     };
  
   const getOneTimeLocation = () => {
+    setLocationStatus('Getting Location ...');
     Geolocation.getCurrentPosition(
       (position) => {
+        setLocationStatus('You are Here');
  
-        const currentLongitude = 
+        const longitude = 
           position.coords.longitude;
  
-        const currentLatitude = 
+        const latitude = 
           position.coords.latitude;
  
-        setCurrentLongitude(currentLongitude);
+        setCurrentLongitude(longitude);
         
-        setCurrentLatitude(currentLatitude);
+        setCurrentLatitude(latitude);
       },
       (error) => {
+        setLocationStatus(error.message);
       },
       {
         enableHighAccuracy: false,
@@ -70,27 +66,14 @@ const HomeScreen = () => {
     );
   };
 
-  const getWeatherData = async (latitude: number, longitude: number) => {
-    let response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=0d562a71b6892a34b199b8fc71e1660f`,
-    )
-    let data = await response.json()
-    setDesc(data.weather[0].description)
-    setTemp(data.main.temp)
-    setName(data.name)
-    console.log(data)
-    return data;
-  }
-
+  
+  useEffect(() => {
     requestLocationPermission();
-    getWeatherData(currentLatitude, currentLongitude)
+  }, [currentLongitude, currentLatitude]);
  
   return (
-    <ScrollView>
-      <MapCard lat={currentLatitude} lon={currentLongitude} refresh={getOneTimeLocation}/>
-      <WeatherCard lat={currentLatitude} lon={currentLongitude} temp={temp} desc={desc} name={name}/>
-    </ScrollView>
+    <ForecastList lat={currentLatitude} lon={currentLongitude}/>
   );
 };
  
-export default HomeScreen;
+export default ForecastScreen;
